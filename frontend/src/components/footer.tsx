@@ -7,60 +7,20 @@
  */
 import { h } from "preact";
 
-type Props = {
-  links?: FooterLink[]
-}
-
-type FooterLink = {
-  name: string;
-  linkId: string;
-  linkTarget: string;
-}
-
-const _DEFAULT_LINKS: FooterLink[] = [
-  {
-    name: "About Oracle",
-    linkId: "aboutOracle",
-    linkTarget: "http://www.oracle.com/us/corporate/index.html#menu-about"
-  },
-  {
-    name: "Contact Us",
-    linkId: "contactUs",
-    linkTarget: "http://www.oracle.com/us/corporate/contact/index.html"
-  },
-  {
-    name: "Legal Notices",
-    linkId: "legalNotices",
-    linkTarget: "http://www.oracle.com/us/legal/index.html"
-  },
-  {
-    name: "Terms Of Use",
-    linkId: "termsOfUse",
-    linkTarget: "http://www.oracle.com/us/legal/terms/index.html"
-  },
-  {
-    name: "Your Privacy Rights",
-    linkId: "yourPrivacyRights",
-    linkTarget: "http://www.oracle.com/us/legal/privacy/index.html"
-  }
-]
-
-export function Footer({ links = _DEFAULT_LINKS } : Props ) {
+export function Footer() {
   return (
-    <footer class="oj-web-applayout-footer" role="contentinfo">
-      <div class="oj-web-applayout-footer-item oj-web-applayout-max-width">
-        <ul>
-          {links.map((item) => (
-            <li>
-              <a id={item.linkId} href={item.linkTarget} target="_blank">
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <footer
+      class="oj-web-applayout-footer oj-flex-bar oj-sm-padding-8x-vertical"
+      role="contentinfo"
+    >
+      <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-flex-bar-start oj-sm-align-items-center">
+        WattWise Wizard
       </div>
-      <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-color-secondary oj-typography-body-sm">
-        Copyright © 2014, 2025 Oracle and/or its affiliates All rights reserved.
+      <div
+        class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-color-secondary 
+               oj-typography-body-sm oj-flex-bar-end oj-sm-justify-content-flex-end oj-sm-align-items-center"
+      >
+        WattWise Wizard 2025
       </div>
     </footer>
   );

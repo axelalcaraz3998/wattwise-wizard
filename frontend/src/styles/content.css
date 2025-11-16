@@ -1,0 +1,16 @@
+.how-number-div {
+  width: 128px;
+  height: 128px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.how-content-div {
+  width: 560px;
+}
+
+.demo-graph-div {
+  width: 640px;
+  height: 640px;
+  border: 1px solid black;
+}

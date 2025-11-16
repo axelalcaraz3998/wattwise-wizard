@@ -20,17 +20,14 @@ type Props = Readonly<{
 
 export const App = registerCustomElement(
   "app-root",
-  ({ appName = "App Name", userLogin = "john.hancock@oracle.com" }: Props) => {
+  ({ appName = "WattWise Wizard" }: Props) => {
     useEffect(() => {
       Context.getPageContext().getBusyContext().applicationBootstrapComplete();
     }, []);
-    
+
     return (
       <div id="appContainer" class="oj-web-applayout-page">
-        <Header
-          appName={appName} 
-          userLogin={userLogin} 
-        />
+        <Header appName={appName} />
         <Content />
         <Footer />
       </div>
