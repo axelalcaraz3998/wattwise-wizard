@@ -13,7 +13,7 @@ import { Demo } from "./demo";
 
 export function Content() {
   return (
-    <div class="oj-web-applayout-max-width oj-web-applayout-content oj-divider-start oj-divider-end">
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
       <Hero />
       <How />
       <CTA />

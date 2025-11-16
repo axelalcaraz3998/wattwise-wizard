@@ -10,6 +10,7 @@ import { h } from "preact";
 export function Footer() {
   return (
     <footer
+      id="footer"
       class="oj-web-applayout-footer oj-flex-bar oj-sm-padding-8x-vertical"
       role="contentinfo"
     >

@@ -6,38 +6,20 @@
  * @ignore
  */
 import { h } from "preact";
-import { useRef, useState, useEffect } from "preact/hooks";
-import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "oj-c/button";
 
 type Props = Readonly<{
   appName: string;
 }>;
 
+function handleScroll() {
+  window.location.hash = "cta";
+}
+
 export function Header({ appName }: Props) {
-  const mediaQueryRef = useRef<MediaQueryList>(
-    window.matchMedia(ResponsiveUtils.getFrameworkQuery("sm-only")!)
-  );
-
-  const [isSmallWidth, setIsSmallWidth] = useState(
-    mediaQueryRef.current.matches
-  );
-
-  useEffect(() => {
-    mediaQueryRef.current.addEventListener("change", handleMediaQueryChange);
-    return () =>
-      mediaQueryRef.current.removeEventListener(
-        "change",
-        handleMediaQueryChange
-      );
-  }, [mediaQueryRef]);
-
-  function handleMediaQueryChange(e: MediaQueryListEvent) {
-    setIsSmallWidth(e.matches);
-  }
-
   return (
     <header
+      id="header"
       role="banner"
       class="oj-web-applayout-header oj-sm-padding-4x-vertical"
     >
@@ -55,6 +37,7 @@ export function Header({ appName }: Props) {
             id="cta-header"
             label="Try It Out"
             chroming="callToAction"
+            onojAction={handleScroll}
           ></oj-c-button>
         </div>
       </div>

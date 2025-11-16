@@ -4,11 +4,14 @@ export function CTA() {
   const acceptArr: string[] = ["image/*"];
 
   return (
-    <div class="oj-divider-bottom oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-padding-12x">
-      <h2 class="oj-text-color-primary oj-typography-heading-lg oj-sm-margin-12x-bottom">
+    <div
+      id="cta"
+      class="oj-divider-bottom oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-padding-12x"
+    >
+      <h2 class="oj-text-color-primary oj-typography-heading-lg oj-sm-margin-12x-bottom custom-text-align-center">
         Start Saving!
       </h2>
-      <p class="oj-typography-body-lg">
+      <p class="oj-typography-body-lg custom-text-align-center">
         Upload or take a picture of your power bill, we will work our magic on
         our end.
       </p>
