@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: wattwisewizard-backend
+  labels:
+    app: wattwisewizard-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: wattwisewizard-backend
+  ports:
+    - name: tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: wattwisewizard-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wattwisewizard-backend
+  template:
+    metadata:
+      labels:
+        app: wattwisewizard-backend
+        version: v1
+    spec:
+      containers:
+      - name: wattwisewizard-backend
+        image: wattwisewizard-backend
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
