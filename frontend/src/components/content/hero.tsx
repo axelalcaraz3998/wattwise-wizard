@@ -12,11 +12,12 @@ export function Hero() {
       class="oj-divider-bottom oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-padding-12x-vertical oj-sm-padding-2x-horizontal"
     >
       <div class="oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-margin-12x-bottom">
-        <div
-          class="oj-flex oj-sm-align-items-center oj-sm-justify-content-center
-               oj-sm-padding-8x oj-sm-margin-1x-bottom oj-bg-neutral-30"
-        >
-          Logo
+        <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-center">
+          <img
+            class="hero-logo"
+            src="https://i.ibb.co/PvPr9wXV/logo.png"
+            alt="WattWise Wizard Logo"
+          />
         </div>
         <h1 class="oj-sm-margin-1x-bottom oj-text-color-primary oj-typography-heading-lg custom-text-align-center">
           WattWise Wizard

@@ -25,6 +25,11 @@ export function Header({ appName }: Props) {
     >
       <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
         <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
+          <img
+            class="header-logo"
+            src="https://i.ibb.co/PvPr9wXV/logo.png"
+            alt="WattWise Wizard Logo"
+          />
           <h1
             class="oj-sm-only-hide oj-web-applayout-header-title"
             title="Application Name"

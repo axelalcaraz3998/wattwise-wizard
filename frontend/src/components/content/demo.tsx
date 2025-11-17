@@ -58,7 +58,10 @@ export function Demo() {
       </h3>
 
       <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-center oj-sm-margin-6x-top">
-        <div class="info-panel oj-panel oj-sm-padding-8x">
+        <div
+          class="info-panel oj-panel oj-sm-padding-8x
+                 oj-sm-only-margin-6x-bottom oj-md-only-margin-6x-bottom"
+        >
           <h3 class="oj-typography-subheading-md">Roof Area</h3>
           <p>
             Your roof area: <strong>{statistcsData.roofArea} m²</strong>.
@@ -75,7 +78,10 @@ export function Demo() {
       </div>
 
       <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-center oj-sm-margin-6x-top">
-        <div class="info-panel oj-panel oj-sm-padding-8x">
+        <div
+          class="info-panel oj-panel oj-sm-padding-8x
+                 oj-sm-only-margin-6x-bottom oj-md-only-margin-6x-bottom"
+        >
           <h3 class="oj-typography-subheading-md">Number of Panels</h3>
           <p>
             Suggested number of panels:{" "}
