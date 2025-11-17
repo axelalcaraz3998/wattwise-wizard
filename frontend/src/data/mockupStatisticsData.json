@@ -1,8 +1,7 @@
 {
-  "avgKwh": 0,
-  "avgCost": 0,
-  "lowestKwh": 0,
-  "lowestCost": 0,
-  "highestKwh": 0,
-  "highestCost": 0
+  "kwh": 283,
+  "roofArea": 64,
+  "avgUsableSunlight": 1577,
+  "numOfPanels": 4,
+  "totalCost": 6540
 }

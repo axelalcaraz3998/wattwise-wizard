@@ -2,7 +2,7 @@ export function How() {
   return (
     <div
       id="how"
-      class="oj-divider-bottom oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-padding-12x"
+      class="oj-divider-bottom oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-justify-content-center oj-sm-padding-12x-vertical oj-sm-padding-2x-horizontal"
     >
       <h2 class="oj-text-color-primary oj-typography-heading-lg oj-sm-margin-12x-bottom custom-text-align-center">
         How Does it Work?
@@ -27,11 +27,11 @@ export function How() {
                    custom-sm-only-text-align-center oj-sm-only-width-4/5"
           >
             <h3 class="oj-sm-margin-0 oj-typography-heading-md">
-              Scan Your Bill
+              Enter Your Location
             </h3>
             <p class="oj-sm-margin-0 oj-typography-body-lg custom-md-only-typography-body-lg">
-              Take a picture of your power bill or upload a digital scan of it
-              and we will take care of the rest.
+              Let us know which city you are in, we will calculate the average
+              usable sunlight per year.
             </p>
           </div>
         </div>
@@ -50,9 +50,9 @@ export function How() {
               Fill Some Information
             </h3>
             <p class="oj-sm-margin-0 oj-typography-body-lg custom-md-only-typography-body-lg">
-              We would love to get all the information we need from the power
-              bill but we still need your help filling out some missing
-              information.
+              Enter your average power consumption in kWh, we will estimate how
+              many solar panels you need based on your consumption and average
+              usable sunlight in your area.
             </p>
           </div>
           <div

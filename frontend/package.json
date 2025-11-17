@@ -4,7 +4,8 @@
   "description": " Project for Oracle Database Hackathon 2025",
   "dependencies": {
     "@oracle/oraclejet": "~19.0.0",
-    "@oracle/oraclejet-core-pack": "~19.0.0"
+    "@oracle/oraclejet-core-pack": "~19.0.0",
+    "dotenv": "^17.2.3"
   },
   "devDependencies": {
     "@oracle/ojet-cli": "~19.0.0",
