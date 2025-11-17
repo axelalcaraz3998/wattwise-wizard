@@ -21,7 +21,7 @@ export function Footer() {
         class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-color-secondary 
                oj-typography-body-sm oj-flex-bar-end oj-sm-justify-content-flex-end oj-sm-align-items-center"
       >
-        WattWise Wizard 2025
+        WattWise Wizard {new Date().getFullYear()}
       </div>
     </footer>
   );

@@ -1,7 +1,7 @@
 import "oj-c/file-picker";
 
 export function CTA() {
-  const acceptArr: string[] = ["image/*"];
+  const acceptArr: string[] = ["image/*", "application/pdf"];
 
   return (
     <div
