@@ -7,16 +7,29 @@
  */
 import { registerCustomElement } from "ojs/ojvcomponent";
 import { h } from "preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import Context = require("ojs/ojcontext");
 import { Footer } from "./footer";
 import { Header } from "./header";
 import { Content } from "./content/index";
+import { StatisticsDataContext } from "./ctx";
+import * as mockupStatisticsData from "text!../data/mockupStatisticsData.json";
+
+type StatisticsData = {
+  kwh: number;
+  roofArea: number;
+  avgUsableSunlight: number;
+  numOfPanels: number;
+  totalCost: number;
+};
 
 type Props = Readonly<{
   appName?: string;
   userLogin?: string;
 }>;
+
+const mockupStatisticsDataObj: StatisticsData =
+  JSON.parse(mockupStatisticsData);
 
 export const App = registerCustomElement(
   "app-root",
@@ -25,12 +38,20 @@ export const App = registerCustomElement(
       Context.getPageContext().getBusyContext().applicationBootstrapComplete();
     }, []);
 
+    const [statisticsData, setStatisticsData] = useState(
+      mockupStatisticsDataObj
+    );
+
     return (
-      <div id="appContainer" class="oj-web-applayout-page">
-        <Header appName={appName} />
-        <Content />
-        <Footer />
-      </div>
+      <StatisticsDataContext.Provider
+        value={{ statisticsData, setStatisticsData }}
+      >
+        <div id="appContainer" class="oj-web-applayout-page">
+          <Header appName={appName} />
+          <Content />
+          <Footer />
+        </div>
+      </StatisticsDataContext.Provider>
     );
   }
 );

@@ -1,3 +1,6 @@
+import { h } from "preact";
+import { useContext } from "preact/hooks";
+import { StatisticsDataContext } from "../ctx";
 import * as mockupStatisticsData from "text!../../data/mockupStatisticsData.json";
 import "oj-c/meter-circle";
 
@@ -10,7 +13,9 @@ type StatisticsData = {
 };
 
 export function Demo() {
-  const statistcsData: StatisticsData = JSON.parse(mockupStatisticsData);
+  const { statisticsData, setStatisticsData } = useContext(
+    StatisticsDataContext
+  );
 
   const referenceLinesWithLabels = [
     {
@@ -44,7 +49,7 @@ export function Demo() {
           aria-labelledby="semi-circular readonly referenceLinesWithLabels"
           min={0}
           max={2400}
-          value={statistcsData.kwh}
+          value={statisticsData.kwh}
           size="lg"
           inner-radius="0.5"
           start-angle="180"
@@ -54,7 +59,7 @@ export function Demo() {
         ></oj-c-meter-circle>
       </div>
       <h3 class="oj-typography-subheading-md custom-text-align-center">
-        Your energy consumption: {statistcsData.kwh} kwh.
+        Your energy consumption: {statisticsData.kwh} kwh.
       </h3>
 
       <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-center oj-sm-margin-6x-top">
@@ -64,15 +69,15 @@ export function Demo() {
         >
           <h3 class="oj-typography-subheading-md">Roof Area</h3>
           <p>
-            Your roof area: <strong>{statistcsData.roofArea} m²</strong>.
+            Your roof area: <strong>{statisticsData.roofArea} m²</strong>.
           </p>
         </div>
 
         <div class="info-panel oj-panel oj-sm-padding-8x">
           <h3 class="oj-typography-subheading-md">Average Usable Sunlight</h3>
           <p>
-            <strong>{statistcsData.avgUsableSunlight} hours</strong> of sunlgiht
-            per year.
+            <strong>{statisticsData.avgUsableSunlight} hours</strong> of
+            sunlight per year.
           </p>
         </div>
       </div>
@@ -85,14 +90,14 @@ export function Demo() {
           <h3 class="oj-typography-subheading-md">Number of Panels</h3>
           <p>
             Suggested number of panels:{" "}
-            <strong>{statistcsData.numOfPanels}.</strong>
+            <strong>{statisticsData.numOfPanels}.</strong>
           </p>
         </div>
 
         <div class="info-panel oj-panel oj-sm-padding-8x">
           <h3 class="oj-typography-subheading-md">Estimated Cost</h3>
           <p>
-            About $<strong>{statistcsData.totalCost} USD</strong> total.
+            About $<strong>{statisticsData.totalCost} USD</strong> total.
           </p>
         </div>
       </div>

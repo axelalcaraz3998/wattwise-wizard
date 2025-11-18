@@ -1,3 +1,5 @@
+import { h } from "preact";
+
 export function How() {
   return (
     <div

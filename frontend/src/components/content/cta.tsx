@@ -1,4 +1,6 @@
-import { useState } from "preact/hooks";
+import { h } from "preact";
+import { useState, useContext } from "preact/hooks";
+import { StatisticsDataContext } from "../ctx";
 import "ojs/ojlabel";
 import "oj-c/input-text";
 import "oj-c/input-number";
@@ -17,6 +19,10 @@ export function CTA() {
     area: 0,
   });
 
+  const { statisticsData, setStatisticsData } = useContext(
+    StatisticsDataContext
+  );
+
   function updateFormState(e: any, name: string) {
     const { value } = e.target;
 
@@ -27,7 +33,17 @@ export function CTA() {
   }
 
   function formSubmit() {
-    console.log(formState);
+    // TODO: Call REST API endpoint and update the context state with response data
+    setStatisticsData((prevState: any) => ({
+      ...prevState,
+      kwh: formState.kwh,
+      roofArea: formState.area,
+      avgUsableSunlight: 1280,
+      numOfPanels: 1,
+      totalCost: 720,
+    }));
+
+    window.location.hash = "demo";
   }
 
   return (
@@ -58,7 +74,7 @@ export function CTA() {
             <oj-c-input-number
               id="kwh-input"
               labelHint="Monthly kWh"
-              placeholder="268"
+              placeholder="283"
               inputSuffix="kWh"
               required
               onvalueChanged={(e) => updateFormState(e, "kwh")}
