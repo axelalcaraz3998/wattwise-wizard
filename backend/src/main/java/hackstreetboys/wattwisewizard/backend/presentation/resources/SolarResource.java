@@ -40,7 +40,8 @@ public class SolarResource {
             double ghi = solarDatasource
                 .getGhiAnnual(coordinatesInfo.getLatitude(), coordinatesInfo.getLongitude());
 
-            SolarResponse resp = solarDatasource.calculate(temp, ghi);
+            SolarResponse resp = solarDatasource
+                .calculate(temp, ghi, Double.parseDouble(solarRequest.getCeilingArea()));
             return Response.ok(resp).build();
 
         } catch (Exception e) {
