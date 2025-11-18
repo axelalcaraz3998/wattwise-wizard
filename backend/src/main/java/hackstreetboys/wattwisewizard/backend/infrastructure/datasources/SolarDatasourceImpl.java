@@ -101,35 +101,7 @@ public class SolarDatasourceImpl extends SolarDatasource {
 
     @Override
     public double getPricePerKwh() throws Exception{
-        // Datos de conexión (ajustar según tu entorno)
-        String url = "jdbc:oracle:thin:@//HOST:PORT/SERVICENAME";
-        String user = "YOUR_USERNAME";
-        String pass = "YOUR_PASSWORD";
-
-        String sql = "SELECT PRICE_KWH FROM KWH_PRICES WHERE COUNTRY_CODE = ?";
-
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, "MX");  // Buscar México
-
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    double price = rs.getDouble("PRICE_KWH");
-                    System.out.println("El precio por kWh en México es: " + price);
-                    return price;
-                } else {
-                    System.out.println("No se encontró registro para MX.");
-                    return 0.15;
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-            return 0.15;
-        }
-        
+      return 0.1762;
     }
 
     public ReceiptInfo getDocumentReceiptInfo(byte[] pdfStreamByte) {
