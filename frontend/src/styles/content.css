@@ -1,3 +1,13 @@
+.header-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.hero-logo {
+  width: 128px;
+  height: 128px;
+}
+
 .how-number-div {
   width: 128px;
   height: 128px;
@@ -13,10 +23,22 @@
   width: 100%;
 }
 
+.info-panel {
+  width: 420px;
+}
+
+#form-container {
+  width: 680px;
+}
+
 @media screen and (max-width: 1023.9px) and (min-width: 600px) {
   .demo-graph-div {
     width: 480px;
     height: 480px;
+  }
+
+  #form-container {
+    width: 480px;
   }
 }
 
@@ -24,5 +46,13 @@
   .demo-graph-div {
     width: 280px;
     height: 280px;
+  }
+
+  #form-container {
+    width: 100%;
+  }
+
+  .info-panel {
+    width: 280px;
   }
 }
