@@ -1,7 +1,7 @@
 {
   "kwh": 283,
   "roofArea": 64,
-  "avgUsableSunlight": 1577,
-  "numOfPanels": 4,
-  "totalCost": 6540
+  "solarPotentialKwhYear": 15577,
+  "estimatedSavingsUsdYear": 2492.55,
+  "co2ReductionTonsYear": 6.64
 }

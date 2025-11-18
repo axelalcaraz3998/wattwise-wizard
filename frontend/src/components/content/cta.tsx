@@ -32,15 +32,32 @@ export function CTA() {
     }));
   }
 
-  function formSubmit() {
-    // TODO: Call REST API endpoint and update the context state with response data
+  async function formSubmit() {
+    const raw = JSON.stringify({
+      address: formState.address,
+      kwHour: formState.kwh,
+      ceilingArea: formState.area,
+      ceilingType: "METERS",
+    });
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const data = await fetch("http://localhost:8080/solar/estimate", {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    });
+    const response = await data.json();
+
     setStatisticsData((prevState: any) => ({
       ...prevState,
       kwh: formState.kwh,
       roofArea: formState.area,
-      avgUsableSunlight: 1280,
-      numOfPanels: 1,
-      totalCost: 720,
+      solarPotentialKwhYear: response.solarPotentialKwhYear,
+      estimatedSavingsUsdYear: response.estimatedSavingsUsdYear,
+      co2ReductionTonsYear: response.co2ReductionTonsYear,
     }));
 
     window.location.hash = "demo";

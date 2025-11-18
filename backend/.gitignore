@@ -34,3 +34,5 @@ nb-configuration.xml
 .classpath
 .factorypath
 
+.DS_Store
+.idea

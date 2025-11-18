@@ -18,9 +18,9 @@ import * as mockupStatisticsData from "text!../data/mockupStatisticsData.json";
 type StatisticsData = {
   kwh: number;
   roofArea: number;
-  avgUsableSunlight: number;
-  numOfPanels: number;
-  totalCost: number;
+  solarPotentialKwhYear: number;
+  estimatedSavingsUsdYear: number;
+  co2ReductionTonsYear: number;
 };
 
 type Props = Readonly<{

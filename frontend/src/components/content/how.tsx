@@ -52,9 +52,7 @@ export function How() {
               Fill Some Information
             </h3>
             <p class="oj-sm-margin-0 oj-typography-body-lg custom-md-only-typography-body-lg">
-              Enter your average power consumption in kWh, we will estimate how
-              many solar panels you need based on your consumption and average
-              usable sunlight in your area.
+              Enter your average power consumption in kWh and roof area.
             </p>
           </div>
           <div
@@ -88,7 +86,7 @@ export function How() {
             </h3>
             <p class="oj-sm-margin-0 oj-typography-body-lg custom-md-only-typography-body-lg">
               See how much you could save by transitioning to solar power, as
-              well as seeing how much it could cost you to go full solar.
+              well as seeing what enviromnental impact you could have!
             </p>
           </div>
         </div>

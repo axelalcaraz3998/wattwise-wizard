@@ -4,14 +4,9 @@ import * as mockupStatisticsData from "text!../data/mockupStatisticsData.json";
 type StatisticsData = {
   kwh: number;
   roofArea: number;
-  avgUsableSunlight: number;
-  numOfPanels: number;
-  totalCost: number;
-};
-
-type ContextType = {
-  statisticsData: StatisticsData;
-  setStatisticsData: () => void;
+  solarPotentialKwhYear: number;
+  estimatedSavingsUsdYear: number;
+  co2ReductionTonsYear: number;
 };
 
 const statisticsData: StatisticsData = JSON.parse(mockupStatisticsData);

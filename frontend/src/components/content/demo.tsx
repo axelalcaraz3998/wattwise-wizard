@@ -74,10 +74,12 @@ export function Demo() {
         </div>
 
         <div class="info-panel oj-panel oj-sm-padding-8x">
-          <h3 class="oj-typography-subheading-md">Average Usable Sunlight</h3>
+          <h3 class="oj-typography-subheading-md">Yearly Solar Potential</h3>
           <p>
-            <strong>{statisticsData.avgUsableSunlight} hours</strong> of
-            sunlight per year.
+            <strong>
+              {statisticsData.solarPotentialKwhYear.toFixed(2)} kWh
+            </strong>{" "}
+            of solar potential per year.
           </p>
         </div>
       </div>
@@ -87,17 +89,23 @@ export function Demo() {
           class="info-panel oj-panel oj-sm-padding-8x
                  oj-sm-only-margin-6x-bottom oj-md-only-margin-6x-bottom"
         >
-          <h3 class="oj-typography-subheading-md">Number of Panels</h3>
+          <h3 class="oj-typography-subheading-md">Yearly Estimated Savings</h3>
           <p>
-            Suggested number of panels:{" "}
-            <strong>{statisticsData.numOfPanels}.</strong>
+            <strong>
+              ${statisticsData.estimatedSavingsUsdYear.toFixed(2)} USD
+            </strong>{" "}
+            per year.
           </p>
         </div>
 
         <div class="info-panel oj-panel oj-sm-padding-8x">
-          <h3 class="oj-typography-subheading-md">Estimated Cost</h3>
+          <h3 class="oj-typography-subheading-md">Environmental Impact</h3>
           <p>
-            About $<strong>{statisticsData.totalCost} USD</strong> total.
+            Up to{" "}
+            <strong>
+              {statisticsData.co2ReductionTonsYear.toFixed(2)} tons
+            </strong>{" "}
+            in CO<sub>2</sub> reductions yearly.
           </p>
         </div>
       </div>
