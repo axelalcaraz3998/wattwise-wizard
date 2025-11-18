@@ -31,6 +31,7 @@ import com.oracle.bmc.auth.SimpleAuthenticationDetailsProvider;
 import com.oracle.bmc.auth.SimplePrivateKeySupplier;
 
 import hackstreetboys.wattwisewizard.backend.domain.datasources.SolarDatasource;
+import hackstreetboys.wattwisewizard.backend.domain.entities.CoordinatesInfo;
 import hackstreetboys.wattwisewizard.backend.domain.entities.ReceiptInfo;
 import hackstreetboys.wattwisewizard.backend.domain.entities.SolarResponse;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -79,14 +80,14 @@ public class SolarDatasourceImpl extends SolarDatasource {
     }
 
     @Override
-    public SolarResponse calculate(double temp, double ghi) throws Exception{
+    public SolarResponse calculate(double temp, double ghi, double ceilingArea) throws Exception{
         SolarResponse resp = new SolarResponse();
 
         resp.setTemperature(temp);
 
         // Factor: eficiencia panel * área * pérdidas (puedes personalizar)
         double efficiency = 0.18;  
-        double area = 20; // m² de paneles → ejemplo
+        double area = ceilingArea; // m² de paneles → ejemplo
         double systemLosses = 0.85;
 
         double annualKwh = ghi * area * efficiency * systemLosses;
@@ -217,6 +218,34 @@ public class SolarDatasourceImpl extends SolarDatasource {
         // AnalyzeDocumentResponse response = client.analyzeDocument(analyzeDocumentRequest);
 
         // System.out.println(response);
+    }
+
+    @Override
+    public CoordinatesInfo getCoordinates(String address) throws Exception {
+
+        final String API_KEY = "691bae2983149399806317woma0ac5d";
+
+        String url = String.format(
+            "https://geocode.maps.co/search?api_key=%s&q=%s",
+            API_KEY, address.replace(" ", "+")
+        );
+
+        HttpRequest req = HttpRequest.newBuilder().uri(URI.create(url)).build();
+        HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
+
+        JsonNode json = mapper.readTree(res.body());
+        // Tomar el primer elemento del arreglo
+        JsonNode first = json.get(0);
+
+        // Obtener latitud y longitud
+        double lat = first.get("lat").asDouble();
+        double lon = first.get("lon").asDouble();
+
+        CoordinatesInfo coordinatesInfo = new CoordinatesInfo();
+        //Llamar a la API
+        coordinatesInfo.setLatitude(lat);
+        coordinatesInfo.setLongitude(lon);
+        return coordinatesInfo;
     }
     
 }

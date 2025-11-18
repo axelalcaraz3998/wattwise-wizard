@@ -10,6 +10,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import hackstreetboys.wattwisewizard.backend.domain.datasources.SolarDatasource;
+import hackstreetboys.wattwisewizard.backend.domain.entities.CoordinatesInfo;
 import hackstreetboys.wattwisewizard.backend.domain.entities.SolarResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -26,57 +27,62 @@ public class SolarResource {
     @Path("/estimate")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response estimate() {
+    public Response estimate(SolarRequest solarRequest) {
         try {
-            SolarRequest req = new SolarRequest();
-            req.lat = 20.641696;
-            req.lon = -103.416307;
+            CoordinatesInfo coordinatesInfo = solarDatasource
+                .getCoordinates(solarRequest.getAddress());
 
-            double temp = solarDatasource.getTemperature(req.lat, req.lon);
-            double ghi = solarDatasource.getGhiAnnual(req.lat, req.lon);
+            System.out.println("Address: " + solarRequest.getAddress());
+            System.out.println(coordinatesInfo);
+
+            double temp = solarDatasource
+                .getTemperature(coordinatesInfo.getLatitude(), coordinatesInfo.getLongitude());
+            double ghi = solarDatasource
+                .getGhiAnnual(coordinatesInfo.getLatitude(), coordinatesInfo.getLongitude());
 
             SolarResponse resp = solarDatasource.calculate(temp, ghi);
             return Response.ok(resp).build();
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return Response.serverError()
                     .entity("Error calculando potencia solar: " + e.getMessage())
                     .build();
         }
     }
 
-    @POST
-    @Path("/estimate-pdf")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response estimatePdf(
-        @FormDataParam("file") InputStream pdfStream,
-        @FormDataParam("file") FormDataContentDisposition fileMeta
-    ) {
-        try {
+    // @POST
+    // @Path("/estimate-pdf")
+    // @Consumes(MediaType.MULTIPART_FORM_DATA)
+    // @Produces(MediaType.APPLICATION_JSON)
+    // public Response estimatePdf(
+    //     @FormDataParam("file") InputStream pdfStream,
+    //     @FormDataParam("file") FormDataContentDisposition fileMeta
+    // ) {
+    //     try {
 
-            if(pdfStream == null){
-                throw new Exception("Pdf file not provided");
-            }
+    //         if(pdfStream == null){
+    //             throw new Exception("Pdf file not provided");
+    //         }
 
-            System.out.println(fileMeta.getFileName());
-            System.out.println(pdfStream.toString());
-            byte[] pdfFileBytes = pdfStream.readAllBytes();
+    //         System.out.println(fileMeta.getFileName());
+    //         System.out.println(pdfStream.toString());
+    //         byte[] pdfFileBytes = pdfStream.readAllBytes();
 
-            SolarRequest req = new SolarRequest();
-            req.lat = 20.641696;
-            req.lon = -103.416307;
+    //         SolarRequest req = new SolarRequest();
+    //         req.lat = 20.641696;
+    //         req.lon = -103.416307;
 
-            double temp = solarDatasource.getTemperature(req.lat, req.lon);
-            double ghi = solarDatasource.getGhiAnnual(req.lat, req.lon);
+    //         double temp = solarDatasource.getTemperature(req.lat, req.lon);
+    //         double ghi = solarDatasource.getGhiAnnual(req.lat, req.lon);
 
-            SolarResponse resp = solarDatasource.calculate(temp, ghi);
-            return Response.ok(resp).build();
+    //         SolarResponse resp = solarDatasource.calculate(temp, ghi);
+    //         return Response.ok(resp).build();
 
-        } catch (Exception e) {
-            return Response.serverError()
-                    .entity("Error calculando potencia solar: " + e.getMessage())
-                    .build();
-        }
-    }
+    //     } catch (Exception e) {
+    //         return Response.serverError()
+    //                 .entity("Error calculando potencia solar: " + e.getMessage())
+    //                 .build();
+    //     }
+    // }
 }
